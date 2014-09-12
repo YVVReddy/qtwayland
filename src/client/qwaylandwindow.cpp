@@ -52,6 +52,7 @@
 #include "qwaylandsubsurface_p.h"
 #include "qwaylanddecoration_p.h"
 #include "qwaylandwindowmanagerintegration_p.h"
+#include "qwaylandivisurface_p.h"
 
 #include <QtCore/QFileInfo>
 #include <QtGui/QWindow>
@@ -73,6 +74,7 @@ QWaylandWindow::QWaylandWindow(QWindow *window)
     , mShellSurface(0)
     , mExtendedWindow(0)
     , mSubSurfaceWindow(0)
+    , mIviSurface(0)
     , mWindowDecoration(0)
     , mMouseEventsInContentArea(false)
     , mMousePressedInContentArea(Qt::NoButton)
@@ -108,6 +110,10 @@ QWaylandWindow::QWaylandWindow(QWindow *window)
         mExtendedWindow = new QWaylandExtendedSurface(this, mDisplay->windowExtension()->get_extended_surface(object()));
     if (mDisplay->subSurfaceExtension())
         mSubSurfaceWindow = new QWaylandSubSurface(this, mDisplay->subSurfaceExtension()->get_sub_surface_aware_surface(object()));
+
+    if (mDisplay->iviApplication() && (window->type() & Qt::Window)) {
+        mIviSurface = new QWaylandIviSurface(mDisplay->iviApplication()->surface_create((uint32_t)QCoreApplication::applicationPid(), object()), this);
+    }
 
     if (mShellSurface) {
         // Set initial surface title

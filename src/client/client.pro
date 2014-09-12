@@ -42,6 +42,8 @@ WAYLANDCLIENTSOURCES += \
             ../extensions/windowmanager.xml \
             ../3rdparty/protocol/text.xml \
             ../3rdparty/protocol/xdg-shell.xml \
+            ../3rdparty/protocol/ivi-application.xml \
+            ../3rdparty/protocol/ivi-controller.xml \
 
 SOURCES +=  qwaylandintegration.cpp \
             qwaylandnativeinterface.cpp \
@@ -72,6 +74,7 @@ SOURCES +=  qwaylandintegration.cpp \
             qwaylandwindowmanagerintegration.cpp \
             qwaylandinputcontext.cpp \
             qwaylanddatadevice.cpp \
+            qwaylandivisurface.cpp \
 
 HEADERS +=  qwaylandintegration_p.h \
             qwaylandnativeinterface_p.h \
@@ -103,5 +106,6 @@ HEADERS +=  qwaylandintegration_p.h \
             qwaylandwindowmanagerintegration_p.h \
             qwaylandinputcontext_p.h \
             qwaylanddatadevice_p.h \
+            qwaylandivisurface_p.h \
 
 include(hardwareintegration/hardwareintegration.pri)

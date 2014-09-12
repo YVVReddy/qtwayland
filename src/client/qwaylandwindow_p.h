@@ -62,6 +62,7 @@ class QWaylandShellSurface;
 class QWaylandExtendedSurface;
 class QWaylandSubSurface;
 class QWaylandDecoration;
+class QWaylandIviSurface;
 
 class Q_WAYLAND_CLIENT_EXPORT QWaylandWindowConfigure
 {
@@ -177,6 +178,7 @@ protected:
     QWaylandShellSurface *mShellSurface;
     QWaylandExtendedSurface *mExtendedWindow;
     QWaylandSubSurface *mSubSurfaceWindow;
+    QWaylandIviSurface *mIviSurface;
 
     QWaylandDecoration *mWindowDecoration;
     bool mMouseEventsInContentArea;

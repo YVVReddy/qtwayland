@@ -233,6 +233,10 @@ void QWaylandDisplay::registry_global(uint32_t id, const QString &interface, uin
         mTextInputManager.reset(new QtWayland::wl_text_input_manager(registry, id));
     } else if (interface == QStringLiteral("qt_hardware_integration")) {
         mHardwareIntegration.reset(new QWaylandHardwareIntegration(registry, id));
+    } else if (interface == QStringLiteral("ivi_application")){
+        mIviApplication.reset(new QtWayland::ivi_application(registry, id));
+    } else if (interface == QStringLiteral("ivi_controller")){
+        mIviController.reset(new QtWayland::ivi_controller(registry, id));
     }
 
     mGlobals.append(RegistryGlobal(id, interface, version, registry));
