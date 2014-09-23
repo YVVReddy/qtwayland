@@ -112,7 +112,10 @@ QWaylandWindow::QWaylandWindow(QWindow *window)
         mSubSurfaceWindow = new QWaylandSubSurface(this, mDisplay->subSurfaceExtension()->get_sub_surface_aware_surface(object()));
 
     if (mDisplay->iviApplication() && (window->type() & Qt::Window)) {
-        mIviSurface = new QWaylandIviSurface(mDisplay->iviApplication()->surface_create((uint32_t)QCoreApplication::applicationPid(), object()), this);
+        uint32_t surface_id = 2002;
+        if (qEnvironmentVariableIsSet("QT_WAYLAND_USE_PID_FOR_SURFACE_ID"))
+            surface_id = (uint32_t)QCoreApplication::applicationPid();
+        mIviSurface = new QWaylandIviSurface(mDisplay->iviApplication()->surface_create(surface_id, object()), this);
     }
 
     if (mShellSurface) {
