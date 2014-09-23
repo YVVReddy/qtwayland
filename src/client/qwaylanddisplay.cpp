@@ -210,8 +210,10 @@ void QWaylandDisplay::registry_global(uint32_t id, const QString &interface, uin
     } else if (interface == QStringLiteral("xdg_shell")
                && qEnvironmentVariableIsSet("QT_WAYLAND_USE_XDG_SHELL")) {
         mShellXdg.reset(new QWaylandXdgShell(registry,id));
+    /** Avoid segmentation fault
     } else if (interface == QStringLiteral("wl_shell")){
         mShell.reset(new QtWayland::wl_shell(registry, id));
+     **/
     } else if (interface == QStringLiteral("wl_seat")) {
         QWaylandInputDevice *inputDevice = new QWaylandInputDevice(this, id);
         mInputDevices.append(inputDevice);
