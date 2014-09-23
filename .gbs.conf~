@@ -1,0 +1,16 @@
+[general]
+upstream_branch = tizen
+upstream_tag = tizen
+tmpdir=/var/tmp/
+profile = profile.tizen3.0_ivi
+work_dir=.
+
+[repo.tizen3.0_x86]
+url=${work_dir}/pre-built/toolchain-x86/
+
+[repo.tizen3.0_x86]
+url=http://download.tizen.org/releases/daily/tizen/ivi/tizen-ivi_20140910.4/repos/atom/packages/
+
+[profile.tizen3.0_ivi]
+repos=repo.tizen3.0_x86, repo.tizen3.0_ivi
+
